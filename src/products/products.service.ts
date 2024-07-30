@@ -11,6 +11,10 @@ export class ProductsService {
     private productsRepository: Repository<Product>,
   ) {}
 
+  async read() {
+    return await this.productsRepository.find();
+  }
+
   async create(CreateProductDto: CreateProductDto) {
     return await this.productsRepository.save(CreateProductDto);
   }
