@@ -12,7 +12,7 @@ export class CreateProductDto {
   imageSrcPath: string | null;
 
   @IsOptional()
-  @IsUrl()
+  @IsString()
   deployUrl: string | null;
 
   @IsString()
