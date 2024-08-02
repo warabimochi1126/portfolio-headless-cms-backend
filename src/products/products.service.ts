@@ -13,11 +13,20 @@ export class ProductsService {
   ) {}
 
   async read() {
-    return await this.productsRepository.find({
+    const productsData = await this.productsRepository.find({
       order: {
         id: "ASC"
       }
     });
+
+    const formattedProductData = productsData.map((productData) => ({
+      ...productData,
+      overview: productData.overview.split(","),
+      mainTechnology: productData.mainTechnology.split(","),
+      subTechnology: productData.subTechnology.split(",")
+    }));
+
+    return formattedProductData;
   }
 
   async create(CreateProductDto: CreateProductDto) {
