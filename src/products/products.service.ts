@@ -13,7 +13,11 @@ export class ProductsService {
   ) {}
 
   async read() {
-    return await this.productsRepository.find();
+    return await this.productsRepository.find({
+      order: {
+        id: "ASC"
+      }
+    });
   }
 
   async create(CreateProductDto: CreateProductDto) {
