@@ -17,7 +17,7 @@ export class UpdateProductDto {
   imageSrcPath: string | null;
 
   @IsOptional()
-  @IsUrl()
+  @IsString()
   deployUrl: string | null;
 
   @IsString()
