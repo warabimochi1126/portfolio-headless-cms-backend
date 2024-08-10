@@ -15,15 +15,15 @@ export class ProductsService {
   async read() {
     const productsData = await this.productsRepository.find({
       order: {
-        id: "ASC"
-      }
+        updated_at: 'DESC',
+      },
     });
 
     const formattedProductData = productsData.map((productData) => ({
       ...productData,
-      overview: productData.overview.split(","),
-      mainTechnology: productData.mainTechnology.split(","),
-      subTechnology: productData.subTechnology.split(",")
+      overview: productData.overview.split(','),
+      mainTechnology: productData.mainTechnology.split(','),
+      subTechnology: productData.subTechnology.split(','),
     }));
 
     return formattedProductData;
